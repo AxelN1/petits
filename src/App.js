@@ -93,18 +93,31 @@ class App extends React.Component {
   renderCircles(n, p) {
     // Création d'une variable circlesArray qui renvoi un tableau vide
     let circlesArray = []
-    // Création d'une boule for qui crée une variable index et lui attribut la valeur du 1er paramètre n
+
+    // Création d'une boucle for qui crée une variable index et lui attribut la valeur du 1er paramètre n, puis si la varible index est
+    // inférieur ou égal au 2ème paramètre p, puis l'incrémentation de la variable index
     for (let index = n; index <= p; index++) {
 
-
+      // Si le state numCase2 est égal à index
       if (this.state.numCase2 === index) {
+
+      // Dans la variable circlesArray qui était vide, on ajoute le rendu du component Circle.jsx et on l'appel avec un index comme clé un code couleur rouge
         circlesArray.push(<Circle key={index} circleColor="#ec4444" />)
-      } else if (this.state.numCase === index) {
+      } 
+
+      // Sinon si le state numCase est égal à index
+      else if (this.state.numCase === index) {
+
+      // Alors, dans la variable circlesArray qui était vide, on ajoute le rendu du component Circle.jsx et on l'appel avec index comme clé et un code couleur bleu
         circlesArray.push(<Circle key={index} circleColor="#4480ec" />)
-      } else {
+      } 
+
+      // Sinon, dans la variable circlesArray qui était vide, on ajoute le rendu du component Circle.jsx et on l'appel avec index comme clé et une couleur black dans la variable circlesArray qui était vide
+      else {
         circlesArray.push(<Circle key={index} circleColor="black" />)
       }
 
+      // Si le state numCase est supérieur à 37
       if (this.state.numCase > 37) {
         const arrayTokens = [...this.state.player1Tokens]
         const indexFirstFalse = arrayTokens.indexOf(false)
