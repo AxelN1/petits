@@ -27,22 +27,33 @@ class App extends React.Component {
   }
 
 
-
+// Création de la fonction lancerDee qui renvoi un nombre aléatoire entre 1 et 6
   lancerDee() {
     const dee = Math.floor(Math.random() * 6 + 1)
     console.log("numDEE :", dee);
 
+    // Création de la constante player qui recoit la valeur du state currentPlayer
     const player = this.state.currentPlayer
 
+    // Si player (currentPlayer === 1)
     if (player === 1) {
 
+      // Si le state numCase est different de 0, ou dee (le nombre aléatoire) est égal à 6
       if (this.state.numCase !== 0 || dee === 6) {
+      // Les states suivantes changent:
+      /* numDee: 0 devient numDee: dee
+      numCase: 0 devient numCase: this.state.numCase + dee
+      currentPlayer: 1 devient currentPlayer: 2*/
         this.setState({
           numDee: dee,
           numCase: this.state.numCase + dee,
           currentPlayer: 2
         })
-      } else {
+      } 
+      // Sinon Les states suivantes changent:
+      /* numDee: 0 devient numDee: dee
+      currentPlayer: 1 devient currentPlayer: 2*/
+      else {
         this.setState({
           numDee: dee,
           currentPlayer: 2
@@ -50,15 +61,25 @@ class App extends React.Component {
       }
 
 
-    } else if (player === 2) {
-
+    } 
+    // Sinon si player (currentPlayer === 2)
+    else if (player === 2) {
+      // Si le state numCase2 est different de 0, ou dee (le nombre aléatoire) est égal à 6
       if (this.state.numCase2 !== 0 || dee === 6) {
+        // Les states suivantes changent:
+      /* numDee: 0 devient numDee2: dee
+      numCase2: 0 devient numCase: this.state.numCase2 + dee
+      currentPlayer: 1 reste currentPlayer: 1*/
         this.setState({
           numDee2: dee,
           numCase2: this.state.numCase2 + dee,
           currentPlayer: 1
         })
-      } else {
+      } 
+      // Sinon Les states suivantes changent:
+      /* numDee2: 0 devient numDee2: dee
+      currentPlayer: 1 reste currentPlayer: 1*/
+      else {
         this.setState({
           numDee2: dee,
           currentPlayer: 1
@@ -68,9 +89,11 @@ class App extends React.Component {
     }
   }
 
+  // Création de la fonction renderCircles qui renvoi les paramètres n et p
   renderCircles(n, p) {
+    // Création d'une variable circlesArray qui renvoi un tableau vide
     let circlesArray = []
-
+    // Création d'une boule for qui crée une variable index et lui attribut la valeur du 1er paramètre n
     for (let index = n; index <= p; index++) {
 
 
@@ -174,8 +197,11 @@ class App extends React.Component {
                     </div>
                   </div>
                   </div>
-
-                  <Numdee />
+                  <div>
+                    
+                  <Numdee/>
+                  </div>
+                  
                   {/* <div className="numeroDee">
 
 
